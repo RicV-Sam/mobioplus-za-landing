@@ -1,0 +1,3 @@
+## 2026-02-25 - Compliance-First UX for Acquisition Pages
+**Learning:** For South African mobile acquisition pages (Vodacom ZA), billing transparency is the top priority. Compliance requires that pricing terms be placed immediately ABOVE the CTA button to ensure user awareness before interaction. Additionally, emojis used for trust signals (stars, security shields) require explicit ARIA labels to maintain accessibility without relying on external image assets.
+**Action:** Always place a .billing-summary element directly preceding any .cta-button. Ensure all trust-related emojis have descriptive aria-labels and decorative emojis use aria-hidden="true".
