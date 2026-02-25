@@ -24,7 +24,7 @@
                 <h1>Get Instant Access to MobioPlus</h1>
                 <p class="trust-signal">Join 50,000+ subscribers in South Africa</p>
                 
-                <a href="https://t2.mobioplus.link/mobioplus.d1/vPYpTvPf06txxTR5ZqXCQPwF/" class="cta-button main-cta">SUBSCRIBE NOW</a>
+                <a href="https://t2.mobioplus.link/mobioplus.d1/vPYpTvPf06txxTR5ZqXCQPwF/" class="cta-button main-cta cta-subscribe">SUBSCRIBE NOW</a>
                 
                 <div class="pricing-summary">
                     R15/day after 24h trial • VAT incl. • Cancel anytime
@@ -56,7 +56,7 @@
             </section>
 
             <div class="secondary-cta-container">
-                <a href="https://t2.mobioplus.link/mobioplus.d1/vPYpTvPf06txxTR5ZqXCQPwF/" class="cta-button secondary-cta">START FREE TRIAL</a>
+                <a href="https://t2.mobioplus.link/mobioplus.d1/vPYpTvPf06txxTR5ZqXCQPwF/" class="cta-button secondary-cta cta-subscribe">START FREE TRIAL</a>
             </div>
 
             <section class="compliance">
@@ -76,25 +76,6 @@
         </footer>
     </div>
 
-    <script>
-        window.onload = function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const gclid = urlParams.get('gclid');
-            const gbraid = urlParams.get('gbraid');
-            
-            const links = document.querySelectorAll('a[href^="https://t2.mobioplus.link"]');
-            links.forEach(link => {
-                const url = new URL(link.href);
-                if (gclid) url.searchParams.set('gclid', gclid);
-                if (gbraid) url.searchParams.set('gbraid', gbraid);
-                
-                // Add a source param to track conversion point
-                if (link.classList.contains('main-cta')) url.searchParams.set('pos', 'hero');
-                if (link.classList.contains('secondary-cta')) url.searchParams.set('pos', 'footer');
-                
-                link.href = url.toString();
-            });
-        };
-    </script>
+    <script src="tracking.js"></script>
 </body>
 </html>
