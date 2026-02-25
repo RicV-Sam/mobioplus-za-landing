@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOBIO+ | Subscribe Now</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="top-nav">
+            <a href="https://www.google.com" class="exit-link">✕ EXIT</a>
+        </div>
+
+        <header>
+            <div class="logo">MOBIO+</div>
+            <div class="tagline">Premium Content Universe</div>
+        </header>
+
+        <main>
+            <div class="promo-badge">FIRST 24 HOURS FREE!</div>
+            
+            <section class="hero">
+                <h1>Get Instant Access to MobioPlus</h1>
+                <p class="trust-signal">Join 50,000+ subscribers in South Africa</p>
+                
+                <a href="https://t2.mobioplus.link/mobioplus.d1/vPYpTvPf06txxTR5ZqXCQPwF/" class="cta-button main-cta">SUBSCRIBE NOW</a>
+                
+                <div class="pricing-summary">
+                    R15/day after 24h trial • VAT incl. • Cancel anytime
+                </div>
+            </section>
+
+            <section class="benefits">
+                <div class="benefit-item">
+                    <span class="icon">✨</span>
+                    <div class="benefit-text">
+                        <strong>MobioAstro</strong>
+                        <p>Daily horoscopes & cosmic insights</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <span class="icon">🕹️</span>
+                    <div class="benefit-text">
+                        <strong>GameZones</strong>
+                        <p>Access 200+ premium mobile games</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <span class="icon">🌌</span>
+                    <div class="benefit-text">
+                        <strong>Mobio360</strong>
+                        <p>Immersive VR-style experiences</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="secondary-cta-container">
+                <a href="https://t2.mobioplus.link/mobioplus.d1/vPYpTvPf06txxTR5ZqXCQPwF/" class="cta-button secondary-cta">START FREE TRIAL</a>
+            </div>
+
+            <section class="compliance">
+                <p><strong>MobioPlus</strong> is a subscription service for Vodacom users in South Africa.</p>
+                <p>Price: <strong>R15/day</strong> (VAT included). First 24 hours are free for new subscribers.</p>
+                <p>Billing: Charged to your Vodacom mobile account. Auto-renews daily until cancelled.</p>
+                <p><strong>To Unsubscribe:</strong> Dial <strong>*135*997#</strong> (free) or manage via the <a href="https://bit.ly/3if1lzJ">Vodacom App</a>.</p>
+                <p>By clicking "SUBSCRIBE NOW", you agree to the Terms & Conditions and understand you are entering an acquisition journey.</p>
+            </section>
+        </main>
+
+        <footer>
+            <a href="terms.html">Terms & Conditions</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="unsubscribe.html">Unsubscribe</a>
+        </footer>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const gclid = urlParams.get('gclid');
+            const gbraid = urlParams.get('gbraid');
+            
+            const links = document.querySelectorAll('a[href^="https://t2.mobioplus.link"]');
+            links.forEach(link => {
+                const url = new URL(link.href);
+                if (gclid) url.searchParams.set('gclid', gclid);
+                if (gbraid) url.searchParams.set('gbraid', gbraid);
+                
+                // Add a source param to track conversion point
+                if (link.classList.contains('main-cta')) url.searchParams.set('pos', 'hero');
+                if (link.classList.contains('secondary-cta')) url.searchParams.set('pos', 'footer');
+                
+                link.href = url.toString();
+            });
+        };
+    </script>
+</body>
+</html>
