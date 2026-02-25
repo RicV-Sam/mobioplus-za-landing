@@ -79,6 +79,19 @@
         } catch (e) {
             // MutationObserver not supported or failed
         }
+
+        // 3. GA4 CTA Tracking
+        document.addEventListener('click', function(event) {
+            const target = event.target.closest('a[href*="t2.mobioplus.link"]');
+            if (target) {
+                if (typeof gtag === 'function') {
+                    gtag('event', 'subscribe_click', {
+                        event_category: 'engagement',
+                        event_label: 'subscribe_cta'
+                    });
+                }
+            }
+        });
     }
 
     // Initialize
