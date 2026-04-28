@@ -96,7 +96,7 @@
         '<article class="content-card"' + idAttr + '>' +
           '<span class="badge badge-free">' + (item.badge || 'Free') + '</span>' +
           '<h3>' + item.title + '</h3>' +
-          '<p class="meta">' + metaParts.join(' · ') + '</p>' +
+          '<p class="meta">' + metaParts.join(' - ') + '</p>' +
           '<p>' + item.description + '</p>' +
           '<button type="button" class="text-cta preview-trigger" data-item-id="' + item.id + '">' + item.ctaLabel + '</button>' +
         '</article>'
@@ -220,7 +220,7 @@
         return;
       }
       previewTitle.textContent = item.title;
-      previewMeta.textContent = item.category + ' · ' + item.type + ' · ' + (item.timeLabel || 'Quick preview');
+      previewMeta.textContent = item.category + ' - ' + item.type + ' - ' + (item.timeLabel || 'Quick preview');
       previewDesc.textContent = item.description;
       previewBody.textContent = item.previewContent;
       clearInteraction();
@@ -250,5 +250,36 @@
     showItem(items[0].id);
   }
 
+  function renderClassicMovies() {
+    var movies = window.MOBIOPLUS_CLASSIC_MOVIES || [];
+    var grid = document.getElementById('classic-movie-grid');
+    if (!grid || !movies.length) {
+      return;
+    }
+
+    var html = movies.map(function (movie) {
+      var pending = movie.verificationStatus === 'needs-review';
+      var ctaHref = movie.watchUrl || movie.sourceUrl || '#free-classic-movies';
+      var ctaLabel = movie.watchUrl ? 'Watch Free' : 'View Classic';
+      return (
+        '<article class="content-card movie-card">' +
+          '<span class="badge badge-free">Free</span>' +
+          '<h3>' + movie.title + ' (' + movie.year + ')</h3>' +
+          '<p class="meta">' + movie.genre + ' - ' + movie.runtime + '</p>' +
+          '<p>' + movie.description + '</p>' +
+          '<p class="rights-line"><strong>Rights:</strong> ' + movie.rightsStatus + '</p>' +
+          '<p class="rights-line">Source: ' + movie.sourceName + '. Rights: ' + movie.licenseLabel + '.</p>' +
+          '<p class="rights-line">' + movie.attributionText + '</p>' +
+          (pending ? '<p class="rights-pending">Rights review pending before final commercial use.</p>' : '') +
+          '<a class="text-cta" href="' + ctaHref + '" target="_blank" rel="noopener noreferrer">' + ctaLabel + '</a>' +
+        '</article>'
+      );
+    }).join('');
+
+    grid.innerHTML = html;
+  }
+
   renderFreeContent();
+  renderClassicMovies();
 })();
+

@@ -181,6 +181,17 @@ h1 { margin: 0; font-size: clamp(1.7rem, 4vw, 2.6rem); line-height: 1.12; }
 .preview-card h3 { margin: 0 0 6px; font-size: 1.05rem; }
 .preview-card p { margin: 6px 0 0; color: var(--muted); }
 .preview-interaction { margin-top: 12px; }
+.movie-card { min-height: 340px; }
+.rights-line { font-size: 0.84rem; color: #bfd5f7; }
+.rights-pending {
+  margin-top: 8px;
+  font-size: 0.82rem;
+  color: #ffd67f;
+  border: 1px solid rgba(255, 200, 87, 0.4);
+  background: rgba(255, 200, 87, 0.12);
+  border-radius: 8px;
+  padding: 6px 8px;
+}
 .mini-tool { background: rgba(13, 27, 49, 0.8); border: 1px solid rgba(73, 167, 255, 0.3); border-radius: 10px; padding: 12px; }
 .mini-row { display: flex; gap: 8px; margin-top: 8px; }
 .mini-input {
