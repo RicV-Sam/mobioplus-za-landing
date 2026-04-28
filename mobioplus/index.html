@@ -14,6 +14,7 @@
   <meta property="og:site_name" content="Mobioplus">
   <link rel="stylesheet" href="./mobioplus.css">
   <script src="./mobioplus-config.js" defer></script>
+  <script src="./free-content-data.js" defer></script>
   <script src="./mobioplus.js" defer></script>
 </head>
 <body>
@@ -84,66 +85,12 @@
     <section id="free-content" class="content-section" aria-labelledby="free-title">
       <div class="section-head">
         <h2 id="free-title">What you can try free today</h2>
-        <p>Explore real Mobioplus mobile entertainment content including free mobile games, quizzes, videos, learning content and lifestyle tips.</p>
+        <p>Try selected Mobioplus content for free before choosing whether to unlock premium.</p>
       </div>
-      <div class="card-grid">
-        <article id="games" class="content-card">
-          <span class="badge badge-free">Free</span>
-          <h3>Quick Tap Sprint: Neon Dash</h3>
-          <p class="meta">Game</p>
-          <p>Beat the 60-second timer, stack combo taps, and track your best score on mobile.</p>
-          <a class="text-cta" href="#free-previews">Play Free</a>
-        </article>
-        <article class="content-card">
-          <span class="badge badge-free">Free</span>
-          <h3>Memory Match: City Icons</h3>
-          <p class="meta">Game</p>
-          <p>Flip and match cards in short rounds designed for quick mobile play sessions.</p>
-          <a class="text-cta" href="#free-previews">Play Free</a>
-        </article>
-        <article id="quizzes" class="content-card">
-          <span class="badge badge-free">Free</span>
-          <h3>Daily Smart Quiz</h3>
-          <p class="meta">Quiz</p>
-          <p>Answer 10 rotating questions each day with instant feedback and score breakdown.</p>
-          <a class="text-cta" href="#free-previews">Try Free</a>
-        </article>
-        <article class="content-card">
-          <span class="badge badge-free">Free</span>
-          <h3>Football Trivia: Matchday Edition</h3>
-          <p class="meta">Quiz</p>
-          <p>Test football knowledge with short matchday rounds focused on clubs, stats and history.</p>
-          <a class="text-cta" href="#free-previews">Try Free</a>
-        </article>
-        <article id="learn" class="content-card">
-          <span class="badge badge-free">Free</span>
-          <h3>Focus Boost in 60 Seconds</h3>
-          <p class="meta">Learn</p>
-          <p>A practical one-minute routine to reset attention before study or work blocks.</p>
-          <a class="text-cta" href="#free-previews">Read Free</a>
-        </article>
-        <article class="content-card">
-          <span class="badge badge-free">Free</span>
-          <h3>Mobile Safety Basics: Starter Guide</h3>
-          <p class="meta">Learn</p>
-          <p>Simple security habits to protect accounts, data and daily mobile usage.</p>
-          <a class="text-cta" href="#free-previews">Read Free</a>
-        </article>
-        <article id="videos" class="content-card">
-          <span class="badge badge-free">Free</span>
-          <h3>Weekend Screen Picks</h3>
-          <p class="meta">Video Preview</p>
-          <p>Watch short trailers and discover what to queue for your next viewing session.</p>
-          <a class="text-cta" href="#free-previews">Watch Preview</a>
-        </article>
-        <article id="lifestyle" class="content-card">
-          <span class="badge badge-free">Free</span>
-          <h3>Fitness Starter: 5-Minute Home Moves</h3>
-          <p class="meta">Lifestyle</p>
-          <p>Beginner-friendly movement tips you can do at home with no special equipment.</p>
-          <a class="text-cta" href="#free-previews">Read Free</a>
-        </article>
-      </div>
+      <div id="free-card-grid" class="card-grid" aria-live="polite"></div>
+      <noscript>
+        <p>Free mobile games and free quizzes are available in this Mobioplus mobile entertainment section, including learning tips and lifestyle tips.</p>
+      </noscript>
     </section>
 
     <section id="free-previews" class="content-section preview-section" aria-labelledby="preview-title">
@@ -152,25 +99,12 @@
         <p>Sample content blocks below show exactly what users can access for free on Mobioplus today.</p>
       </div>
       <div class="preview-grid">
-        <article class="preview-card">
-          <h3>Game Preview: Quick Tap Sprint</h3>
-          <p class="meta">Free Game Sample</p>
-          <p>Goal: score 1,200 points in 60 seconds. Tip: chain taps in the same color lane for combo multipliers.</p>
-        </article>
-        <article class="preview-card">
-          <h3>Quiz Preview: Daily Smart Quiz</h3>
-          <p class="meta">Free Quiz Sample</p>
-          <p>Sample question: Which planet is known as the Red Planet? Answer instantly and get category-level feedback.</p>
-        </article>
-        <article class="preview-card">
-          <h3>Video Preview: Weekend Screen Picks</h3>
-          <p class="meta">Free Video Preview Sample</p>
-          <p>Three short previews: action, comedy and documentary highlights curated for mobile viewing time.</p>
-        </article>
-        <article class="preview-card">
-          <h3>Learning Preview: Mobile Safety Basics</h3>
-          <p class="meta">Free Learning Sample</p>
-          <p>Today’s tip: enable two-factor authentication on your primary email before linking new apps.</p>
+        <article class="preview-card preview-panel" aria-live="polite">
+          <h3 id="free-preview-item-title">Select a free item to preview</h3>
+          <p id="free-preview-item-meta" class="meta">Free Content Preview</p>
+          <p id="free-preview-item-desc">Choose any free card above to read the full preview, game challenge details, or quiz sample content.</p>
+          <p id="free-preview-item-body"></p>
+          <div id="free-preview-interaction" class="preview-interaction"></div>
         </article>
       </div>
     </section>
