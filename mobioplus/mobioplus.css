@@ -44,9 +44,9 @@ body {
   backdrop-filter: blur(10px);
 }
 .header-inner {
-  max-width: 1100px;
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 14px;
+  padding: 14px 20px;
   display: flex;
   gap: 12px;
   align-items: center;
@@ -101,28 +101,30 @@ body {
   border-color: var(--line);
   background: rgba(18, 33, 61, 0.5);
 }
-main { max-width: 1100px; margin: 0 auto; padding: 16px; }
+main { max-width: 1180px; margin: 0 auto; padding: 20px; }
 .hero {
   display: grid;
-  gap: 16px;
+  gap: 18px;
   grid-template-columns: 1fr;
-  margin-top: 16px;
+  margin-top: 18px;
 }
 .hero-copy, .hero-panel, .content-card, .premium-section, .how-section, .trust-section, .faq-section {
   background: linear-gradient(180deg, rgba(18, 33, 61, 0.82), rgba(12, 24, 44, 0.92));
   border: 1px solid var(--line);
   border-radius: 20px;
 }
-.hero-copy { padding: 22px; }
+.hero-copy { padding: 26px; }
 .eyebrow { text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1.2px; color: var(--accent); margin: 0 0 8px; }
 h1 { margin: 0; font-size: clamp(1.7rem, 4vw, 2.6rem); line-height: 1.12; }
-.hero-text { color: var(--muted); margin-top: 10px; }
+.hero-text { color: var(--muted); margin-top: 10px; max-width: 62ch; }
 .hero-cta-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
 .trust-line { font-size: 0.92rem; color: #d4e0fa; margin-top: 12px; }
-.hero-panel { padding: 16px; display: grid; gap: 10px; grid-template-columns: repeat(3, 1fr); }
-.metric-card { background: rgba(11, 19, 38, 0.9); border: 1px solid rgba(73, 167, 255, 0.3); border-radius: 12px; padding: 12px; }
-.metric-label { display: block; color: var(--muted); font-size: 0.78rem; margin-bottom: 3px; }
-.category-strip { margin: 18px 0; }
+.hero-panel { padding: 16px; display: grid; gap: 12px; grid-template-columns: 1fr; align-content: start; }
+.metric-card { background: rgba(11, 19, 38, 0.9); border: 1px solid rgba(73, 167, 255, 0.3); border-radius: 12px; padding: 14px; min-height: 116px; display: flex; flex-direction: column; }
+.metric-label { display: block; color: var(--muted); font-size: 0.78rem; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+.metric-card strong { font-size: 1rem; line-height: 1.3; margin-bottom: 6px; }
+.metric-card p { margin: 0; color: var(--muted); font-size: 0.88rem; line-height: 1.35; }
+.category-strip { margin: 24px 0 14px; }
 .chip-row {
   display: flex;
   gap: 10px;
@@ -138,16 +140,16 @@ h1 { margin: 0; font-size: clamp(1.7rem, 4vw, 2.6rem); line-height: 1.12; }
   padding: 8px 12px;
   white-space: nowrap;
 }
-.content-section { margin: 24px 0; }
-.section-head h2 { margin: 0; font-size: 1.4rem; }
-.section-head p { margin-top: 6px; color: var(--muted); }
+.content-section { margin: 32px 0; }
+.section-head h2 { margin: 0; font-size: clamp(1.35rem, 2.2vw, 1.75rem); }
+.section-head p { margin-top: 8px; color: var(--muted); }
 .card-grid {
-  margin-top: 14px;
+  margin-top: 16px;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
+  gap: 14px;
 }
-.content-card { padding: 16px; position: relative; }
+.content-card { padding: 16px; position: relative; display: flex; flex-direction: column; min-height: 215px; }
 .badge {
   position: absolute;
   right: 12px;
@@ -162,8 +164,8 @@ h1 { margin: 0; font-size: clamp(1.7rem, 4vw, 2.6rem); line-height: 1.12; }
 .content-card h3 { margin: 0 0 5px; padding-right: 66px; }
 .meta { margin: 0; color: #8ec6ff; font-size: 0.85rem; }
 .content-card p { margin: 6px 0 0; color: var(--muted); }
-.text-cta { margin-top: 10px; display: inline-block; color: var(--text); }
-.premium-section, .how-section, .trust-section, .faq-section { padding: 20px; margin: 24px 0; }
+.text-cta { margin-top: auto; padding-top: 12px; display: inline-block; color: var(--text); font-weight: 700; }
+.premium-section, .how-section, .trust-section, .faq-section { padding: 22px; margin: 30px 0; }
 .premium-section ul { margin: 10px 0 0 18px; padding: 0; }
 .premium-cta-wrap { margin-top: 14px; }
 .billing-note { font-size: 0.9rem; color: #cce2ff; margin: 8px 0 0; }
@@ -186,9 +188,9 @@ h1 { margin: 0; font-size: clamp(1.7rem, 4vw, 2.6rem); line-height: 1.12; }
 }
 .faq-section summary { cursor: pointer; font-weight: 700; }
 .site-footer {
-  max-width: 1100px;
+  max-width: 1180px;
   margin: 28px auto 40px;
-  padding: 0 16px;
+  padding: 0 20px;
   color: var(--muted);
 }
 .footer-brand { color: var(--text); font-size: 1.1rem; font-weight: 700; }
@@ -198,10 +200,20 @@ a:focus-visible, button:focus-visible {
   outline-offset: 3px;
 }
 @media (min-width: 768px) {
-  .hero { grid-template-columns: 1.2fr 1fr; }
+  main { padding: 24px 22px; }
+  .hero { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 16px; }
+  .hero-copy { padding: 30px; }
+  .hero-panel { grid-template-columns: 1fr; }
   .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .trust-section dl { grid-template-columns: 180px 1fr; }
 }
 @media (min-width: 1024px) {
+  main { padding: 28px 24px; }
+  .hero { grid-template-columns: minmax(0, 1.5fr) minmax(320px, 0.9fr); align-items: stretch; }
+  .hero-panel { padding: 18px; }
+  .category-strip { margin: 26px 0 16px; }
   .card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 1366px) {
+  .card-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
