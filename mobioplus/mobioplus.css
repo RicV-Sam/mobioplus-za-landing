@@ -1,0 +1,207 @@
+:root {
+  --bg: #080f1f;
+  --bg-soft: #101a31;
+  --surface: #12213d;
+  --surface-2: #16294a;
+  --line: #2a3f6b;
+  --text: #f4f8ff;
+  --muted: #b7c6e6;
+  --accent: #1ec8a5;
+  --accent-2: #49a7ff;
+  --premium: #ffc857;
+  --danger: #ff7e7e;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1000px 500px at 90% -10%, rgba(73, 167, 255, 0.22), transparent),
+    radial-gradient(800px 500px at 10% -20%, rgba(30, 200, 165, 0.22), transparent),
+    linear-gradient(180deg, #060b17 0%, #0b1326 100%);
+  line-height: 1.5;
+}
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+.skip-link:focus {
+  left: 12px;
+  top: 12px;
+  background: #fff;
+  color: #111;
+  padding: 8px;
+  border-radius: 8px;
+  z-index: 100;
+}
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(6, 11, 23, 0.92);
+  border-bottom: 1px solid rgba(73, 167, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.brand {
+  color: var(--text);
+  text-decoration: none;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.brand-mark {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #041022;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+}
+.brand-text { font-weight: 700; letter-spacing: 0.3px; }
+.main-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 12px;
+  overflow: auto;
+}
+.main-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.94rem;
+}
+.button {
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-weight: 700;
+  display: inline-block;
+  border: 1px solid transparent;
+}
+.button-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #041022;
+}
+.button-secondary {
+  color: var(--text);
+  border-color: var(--line);
+  background: rgba(18, 33, 61, 0.5);
+}
+main { max-width: 1100px; margin: 0 auto; padding: 16px; }
+.hero {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+  margin-top: 16px;
+}
+.hero-copy, .hero-panel, .content-card, .premium-section, .how-section, .trust-section, .faq-section {
+  background: linear-gradient(180deg, rgba(18, 33, 61, 0.82), rgba(12, 24, 44, 0.92));
+  border: 1px solid var(--line);
+  border-radius: 20px;
+}
+.hero-copy { padding: 22px; }
+.eyebrow { text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1.2px; color: var(--accent); margin: 0 0 8px; }
+h1 { margin: 0; font-size: clamp(1.7rem, 4vw, 2.6rem); line-height: 1.12; }
+.hero-text { color: var(--muted); margin-top: 10px; }
+.hero-cta-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+.trust-line { font-size: 0.92rem; color: #d4e0fa; margin-top: 12px; }
+.hero-panel { padding: 16px; display: grid; gap: 10px; grid-template-columns: repeat(3, 1fr); }
+.metric-card { background: rgba(11, 19, 38, 0.9); border: 1px solid rgba(73, 167, 255, 0.3); border-radius: 12px; padding: 12px; }
+.metric-label { display: block; color: var(--muted); font-size: 0.78rem; margin-bottom: 3px; }
+.category-strip { margin: 18px 0; }
+.chip-row {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+.chip {
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  background: rgba(14, 26, 49, 0.8);
+  border-radius: 999px;
+  padding: 8px 12px;
+  white-space: nowrap;
+}
+.content-section { margin: 24px 0; }
+.section-head h2 { margin: 0; font-size: 1.4rem; }
+.section-head p { margin-top: 6px; color: var(--muted); }
+.card-grid {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+.content-card { padding: 16px; position: relative; }
+.badge {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  border-radius: 8px;
+  padding: 3px 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+.badge-free { background: rgba(30, 200, 165, 0.2); color: #87f3de; border: 1px solid rgba(30, 200, 165, 0.4); }
+.badge-premium { background: rgba(255, 200, 87, 0.2); color: #ffd67f; border: 1px solid rgba(255, 200, 87, 0.4); }
+.content-card h3 { margin: 0 0 5px; padding-right: 66px; }
+.meta { margin: 0; color: #8ec6ff; font-size: 0.85rem; }
+.content-card p { margin: 6px 0 0; color: var(--muted); }
+.text-cta { margin-top: 10px; display: inline-block; color: var(--text); }
+.premium-section, .how-section, .trust-section, .faq-section { padding: 20px; margin: 24px 0; }
+.premium-section ul { margin: 10px 0 0 18px; padding: 0; }
+.premium-cta-wrap { margin-top: 14px; }
+.billing-note { font-size: 0.9rem; color: #cce2ff; margin: 8px 0 0; }
+.how-section ol { padding-left: 22px; margin: 8px 0 0; }
+.trust-section dl {
+  margin: 12px 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+}
+.trust-section dt { color: #95beef; font-weight: 700; }
+.trust-section dd { margin: 0 0 8px; color: var(--text); }
+.trust-section a, .site-footer a { color: #9fddff; }
+.faq-section details {
+  border: 1px solid rgba(73, 167, 255, 0.22);
+  border-radius: 12px;
+  padding: 10px;
+  margin-bottom: 8px;
+  background: rgba(9, 17, 34, 0.6);
+}
+.faq-section summary { cursor: pointer; font-weight: 700; }
+.site-footer {
+  max-width: 1100px;
+  margin: 28px auto 40px;
+  padding: 0 16px;
+  color: var(--muted);
+}
+.footer-brand { color: var(--text); font-size: 1.1rem; font-weight: 700; }
+.footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin: 8px 0; }
+a:focus-visible, button:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+}
+@media (min-width: 768px) {
+  .hero { grid-template-columns: 1.2fr 1fr; }
+  .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .trust-section dl { grid-template-columns: 180px 1fr; }
+}
+@media (min-width: 1024px) {
+  .card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
