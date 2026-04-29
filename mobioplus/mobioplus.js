@@ -76,12 +76,11 @@
       if (c === 'videos') return 'VIDEO';
       return 'FREE';
     }
-    function buildCard(item, extraClass, rank) {
+    function buildCard(item, extraClass, rank, badgeLabel) {
       var safeTitle = item.title || 'Free item';
       var safeCategory = item.category || 'General';
       var safeType = item.type || 'Preview';
       var safeDescription = item.description || 'Free preview content.';
-      var compactDescription = safeDescription.length > 84 ? safeDescription.slice(0, 81) + '...' : safeDescription;
       var safeCtaLabel = item.ctaLabel || 'View Free';
       var categoryClass = 'cat-' + safeCategory.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
@@ -99,11 +98,11 @@
 
       return (
         '<article class="content-card shelf-card ' + categoryClass + ' ' + (extraClass || '') + '"' + (rank ? ' data-rank="' + rank + '"' : '') + '>' +
-          '<span class="badge badge-free">' + (item.badge || 'Free') + '</span>' +
+          '<span class="badge badge-free">' + (badgeLabel || item.badge || 'Free') + '</span>' +
           '<span class="tile-icon" aria-hidden="true">' + iconForCategory(safeCategory) + '</span>' +
           '<h3>' + safeTitle + '</h3>' +
           '<p class="meta">' + metaParts.join(' - ') + '</p>' +
-          '<p>' + compactDescription + '</p>' +
+          '<p class="tile-desc">' + safeDescription + '</p>' +
           ctaHtml +
         '</article>'
       );
@@ -125,7 +124,9 @@
       freeGamesShelf.innerHTML = games.map(function (item) { return buildCard(item); }).join('');
     }
     if (trendingShelf) {
-      trendingShelf.innerHTML = trending.map(function (item) { return buildCard(item); }).join('');
+      trendingShelf.innerHTML = trending.map(function (item, idx) {
+        return buildCard(item, '', null, idx < 3 ? 'New' : (item.badge || 'Free'));
+      }).join('');
     }
     if (topShelf) {
       topShelf.innerHTML = topWeek.map(function (item, idx) { return buildCard(item, 'rank-card', idx + 1); }).join('');
@@ -369,17 +370,15 @@
       var description = movie.description || 'Classic movie preview details unavailable.';
       var sourceName = movie.sourceName || 'Archive source';
       var rightsLabel = movie.licenseLabel || 'Rights review required';
-      var cta = (movie.watchMode === 'embed' && movie.embedAllowed) ? 'Watch Free' : 'View Classic';
+      var cta = (movie.watchMode === 'embed' && movie.embedAllowed) ? 'Watch Preview' : 'View Classic';
 
       return (
         '<article class="content-card movie-card">' +
-          '<span class="badge badge-free">Free</span>' +
+          '<span class="badge badge-free">Classic</span>' +
           '<span class="tile-icon" aria-hidden="true">' + iconForGenre(genre) + '</span>' +
           '<h3>' + title + '</h3>' +
           '<p class="meta">' + year + ' - ' + genre + ' - ' + runtime + '</p>' +
-          '<p>' + description + '</p>' +
-          '<p class="rights-line">Rights: ' + rightsLabel + '</p>' +
-          '<p class="rights-pending">Rights review pending before final commercial use.</p>' +
+          '<p class="rights-pending rights-chip">Rights review pending</p>' +
           '<button type="button" class="text-cta movie-trigger" data-movie-id="' + movie.id + '">' + cta + '</button>' +
         '</article>'
       );
