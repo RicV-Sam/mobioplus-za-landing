@@ -83,6 +83,9 @@
       var safeDescription = item.description || 'Free preview content.';
       var safeCtaLabel = item.ctaLabel || 'View Free';
       var categoryClass = 'cat-' + safeCategory.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      var coverImage = item.coverImage || '';
+      var coverAlt = item.coverAlt || (safeTitle + ' cover');
+      var coverTheme = item.coverTheme || 'default';
 
       var metaParts = [safeCategory, safeType];
       if (item.timeLabel) {
@@ -95,9 +98,13 @@
       var ctaHtml = item.playUrl
         ? '<a class="text-cta" href="' + item.playUrl + '" aria-label="' + safeCtaLabel + ': ' + safeTitle + '">' + safeCtaLabel + '</a>'
         : '<button type="button" class="text-cta preview-trigger" data-item-id="' + item.id + '">' + safeCtaLabel + '</button>';
+      var coverHtml = coverImage
+        ? '<div class="tile-cover theme-' + coverTheme + '"><img src="' + coverImage + '" alt="' + coverAlt + '" loading="lazy"></div>'
+        : '<div class="tile-cover theme-' + coverTheme + '" aria-hidden="true"></div>';
 
       return (
         '<article class="content-card shelf-card ' + categoryClass + ' ' + (extraClass || '') + '"' + (rank ? ' data-rank="' + rank + '"' : '') + '>' +
+          coverHtml +
           '<span class="badge badge-free">' + (badgeLabel || item.badge || 'Free') + '</span>' +
           '<span class="tile-icon" aria-hidden="true">' + iconForCategory(safeCategory) + '</span>' +
           '<h3>' + safeTitle + '</h3>' +
@@ -295,6 +302,10 @@
       featuredDesc.textContent = featured.description || 'Try selected Mobioplus free content today.';
       featuredLink.href = featured.playUrl || '#free-previews';
       featuredLink.textContent = featured.playUrl ? 'Play Free' : 'Try Free';
+      var heroCover = document.querySelector('.feature-cover');
+      if (heroCover && featured.coverImage) {
+        heroCover.innerHTML = '<img src="' + featured.coverImage + '" alt="' + (featured.coverAlt || (featured.title + ' featured cover')) + '" loading="lazy"><span class="badge badge-free">Free</span>';
+      }
     }
   }
 
@@ -371,9 +382,16 @@
       var sourceName = movie.sourceName || 'Archive source';
       var rightsLabel = movie.licenseLabel || 'Rights review required';
       var cta = (movie.watchMode === 'embed' && movie.embedAllowed) ? 'Watch Preview' : 'View Classic';
+      var movieCoverImage = movie.coverImage || '';
+      var movieCoverAlt = movie.coverAlt || (title + ' classic cinema cover');
+      var movieCoverTheme = movie.coverTheme || 'classic-default';
+      var movieCoverHtml = movieCoverImage
+        ? '<div class="tile-cover movie-cover theme-' + movieCoverTheme + '"><img src="' + movieCoverImage + '" alt="' + movieCoverAlt + '" loading="lazy"></div>'
+        : '<div class="tile-cover movie-cover theme-' + movieCoverTheme + '" aria-hidden="true"></div>';
 
       return (
         '<article class="content-card movie-card">' +
+          movieCoverHtml +
           '<span class="badge badge-free">Classic</span>' +
           '<span class="tile-icon" aria-hidden="true">' + iconForGenre(genre) + '</span>' +
           '<h3>' + title + '</h3>' +
