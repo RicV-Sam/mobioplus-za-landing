@@ -79,26 +79,33 @@
     };
 
     var html = items.map(function (item) {
-      var anchorId = item.anchorId || categoriesToAnchors[item.category];
+      var safeTitle = item.title || 'Free item';
+      var safeCategory = item.category || 'General';
+      var safeType = item.type || 'Preview';
+      var safeDescription = item.description || 'Free preview content.';
+      var safeCtaLabel = item.ctaLabel || 'View Free';
+      var anchorId = item.anchorId || categoriesToAnchors[safeCategory];
       var idAttr = '';
       if (anchorId && !firstAnchorByCategory[anchorId]) {
         firstAnchorByCategory[anchorId] = true;
         idAttr = ' id="' + anchorId + '"';
       }
-      var metaParts = [item.category, item.type];
+
+      var metaParts = [safeCategory, safeType];
       if (item.timeLabel) {
         metaParts.push(item.timeLabel);
       }
       if (item.difficultyLabel) {
         metaParts.push(item.difficultyLabel);
       }
+
       return (
         '<article class="content-card"' + idAttr + '>' +
           '<span class="badge badge-free">' + (item.badge || 'Free') + '</span>' +
-          '<h3>' + item.title + '</h3>' +
-          '<p class="meta">' + metaParts.join(' · ') + '</p>' +
-          '<p>' + item.description + '</p>' +
-          '<button type="button" class="text-cta preview-trigger" data-item-id="' + item.id + '">' + item.ctaLabel + '</button>' +
+          '<h3>' + safeTitle + '</h3>' +
+          '<p class="meta">' + metaParts.join(' - ') + '</p>' +
+          '<p>' + safeDescription + '</p>' +
+          '<button type="button" class="text-cta preview-trigger" data-item-id="' + item.id + '">' + safeCtaLabel + '</button>' +
         '</article>'
       );
     }).join('');
@@ -107,7 +114,9 @@
 
     var previewMap = {};
     items.forEach(function (item) {
-      previewMap[item.id] = item;
+      if (item && item.id) {
+        previewMap[item.id] = item;
+      }
     });
 
     var previewTitle = document.getElementById('free-preview-item-title');
@@ -219,10 +228,10 @@
       if (!item) {
         return;
       }
-      previewTitle.textContent = item.title;
-      previewMeta.textContent = item.category + ' · ' + item.type + ' · ' + (item.timeLabel || 'Quick preview');
-      previewDesc.textContent = item.description;
-      previewBody.textContent = item.previewContent;
+      previewTitle.textContent = item.title || 'Free item';
+      previewMeta.textContent = (item.category || 'General') + ' - ' + (item.type || 'Preview') + ' - ' + (item.timeLabel || 'Quick preview');
+      previewDesc.textContent = item.description || 'Free preview content.';
+      previewBody.textContent = item.previewContent || '';
       clearInteraction();
 
       if (item.id === 'reaction-tap-challenge') {
@@ -247,8 +256,147 @@
       showItem(btn.getAttribute('data-item-id'));
     });
 
-    showItem(items[0].id);
+    if (items[0] && items[0].id) {
+      showItem(items[0].id);
+    }
+  }
+
+  function renderClassicMovies() {
+    var movies = window.MOBIOPLUS_CLASSIC_MOVIES || [];
+    var grid = document.getElementById('classic-movie-grid');
+    if (!grid) {
+      return;
+    }
+
+    var previewTitle = document.getElementById('movie-preview-title');
+    var previewMeta = document.getElementById('movie-preview-meta');
+    var frameWrap = document.getElementById('movie-preview-frame-wrap');
+    var previewDescription = document.getElementById('movie-preview-description');
+    var previewSource = document.getElementById('movie-preview-source');
+    var previewRights = document.getElementById('movie-preview-rights');
+    var previewStatus = document.getElementById('movie-preview-status');
+    var sourceLink = document.getElementById('movie-preview-source-link');
+
+    function setDefaultPanel(message) {
+      if (previewTitle) previewTitle.textContent = 'Select a classic film';
+      if (previewMeta) previewMeta.textContent = 'Free classic movie preview';
+      if (frameWrap) frameWrap.innerHTML = '<p class="rights-line">' + message + '</p>';
+      if (previewDescription) previewDescription.textContent = '';
+      if (previewSource) previewSource.textContent = '';
+      if (previewRights) previewRights.textContent = '';
+      if (previewStatus) previewStatus.textContent = 'Status: Rights review pending before final commercial use.';
+      if (sourceLink) {
+        sourceLink.href = '#free-classic-movies';
+        sourceLink.textContent = 'View Source Page';
+      }
+    }
+
+    if (!movies.length) {
+      setDefaultPanel('Classic movie data is currently unavailable. Please use source links when available.');
+      return;
+    }
+
+    var approvedEmbedHosts = {
+      'archive.org': true,
+      'www.archive.org': true
+    };
+
+    function isSafeEmbedUrl(url) {
+      try {
+        var parsed = new URL(url);
+        return !!approvedEmbedHosts[parsed.hostname];
+      } catch (e) {
+        return false;
+      }
+    }
+
+    var map = {};
+    var html = movies.map(function (movie) {
+      if (!movie || !movie.id) {
+        return '';
+      }
+      map[movie.id] = movie;
+      var title = movie.title || 'Classic movie';
+      var year = movie.year || 'Year unknown';
+      var genre = movie.genre || 'Genre not specified';
+      var runtime = movie.runtime || 'Runtime unknown';
+      var description = movie.description || 'Classic movie preview details unavailable.';
+      var sourceName = movie.sourceName || 'Archive source';
+      var rightsLabel = movie.licenseLabel || 'Rights review required';
+      var cta = (movie.watchMode === 'embed' && movie.embedAllowed) ? 'Watch Free' : 'View Classic';
+
+      return (
+        '<article class="content-card movie-card">' +
+          '<span class="badge badge-free">Free</span>' +
+          '<h3>' + title + '</h3>' +
+          '<p class="meta">' + year + ' - ' + genre + ' - ' + runtime + '</p>' +
+          '<p>' + description + '</p>' +
+          '<p class="rights-line">Source: ' + sourceName + '. Rights: ' + rightsLabel + '.</p>' +
+          '<p class="rights-pending">Rights review pending before final commercial use.</p>' +
+          '<button type="button" class="text-cta movie-trigger" data-movie-id="' + movie.id + '">' + cta + '</button>' +
+        '</article>'
+      );
+    }).join('');
+
+    grid.innerHTML = html;
+
+    function showMovie(movieId) {
+      var movie = map[movieId];
+      if (!movie) {
+        setDefaultPanel('Classic movie details unavailable for this selection.');
+        return;
+      }
+
+      var title = movie.title || 'Classic movie';
+      var year = movie.year || 'Year unknown';
+      var genre = movie.genre || 'Genre not specified';
+      var runtime = movie.runtime || 'Runtime unknown';
+      var description = movie.description || 'Classic movie preview details unavailable.';
+      var sourceName = movie.sourceName || 'Archive source';
+      var sourcePageUrl = movie.sourcePageUrl || '#free-classic-movies';
+      var rightsStatus = movie.rightsStatus || 'Rights status pending verification';
+      var licenseLabel = movie.licenseLabel || 'Rights review required';
+
+      if (previewTitle) previewTitle.textContent = title;
+      if (previewMeta) previewMeta.textContent = year + ' - ' + genre + ' - ' + runtime;
+      if (previewDescription) previewDescription.textContent = description;
+      if (previewSource) previewSource.textContent = 'Source: ' + sourceName;
+      if (previewRights) previewRights.textContent = 'Rights: ' + licenseLabel + '. ' + rightsStatus;
+      if (previewStatus) previewStatus.textContent = 'Status: Rights review pending before final commercial use.';
+      if (sourceLink) {
+        sourceLink.href = sourcePageUrl;
+        sourceLink.textContent = 'View source page';
+      }
+
+      var shouldEmbed = movie.watchMode === 'embed' && movie.embedAllowed === true && !!movie.embedUrl && isSafeEmbedUrl(movie.embedUrl);
+      if (shouldEmbed) {
+        frameWrap.innerHTML = '<iframe class="movie-embed" src="' + movie.embedUrl + '" title="' + title + ' classic movie preview" loading="lazy" allowfullscreen></iframe>';
+      } else {
+        frameWrap.innerHTML = '<p class="rights-line">Embedded preview unavailable for this item. Use the source page link below.</p>';
+      }
+
+      var section = document.getElementById('free-classic-movies');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    grid.addEventListener('click', function (event) {
+      var btn = event.target.closest('.movie-trigger');
+      if (!btn) {
+        return;
+      }
+      showMovie(btn.getAttribute('data-movie-id'));
+    });
+
+    var first = movies.find(function (movie) { return movie && movie.id; });
+    if (first) {
+      showMovie(first.id);
+    } else {
+      setDefaultPanel('Classic movie data is currently unavailable. Please use source links when available.');
+    }
   }
 
   renderFreeContent();
+  renderClassicMovies();
 })();
