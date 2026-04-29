@@ -412,6 +412,23 @@ a:focus-visible, button:focus-visible {
 .shelf-row .content-card p {
   font-size: 0.89rem;
 }
+.tile-icon {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  z-index: 2;
+  font-size: 0.62rem;
+  letter-spacing: 0.6px;
+  font-weight: 800;
+  color: #eef6ff;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: rgba(6, 13, 27, 0.55);
+  border-radius: 999px;
+  padding: 2px 7px;
+}
+.movie-card .tile-icon {
+  border-color: rgba(255, 200, 87, 0.6);
+}
 .shelf-row .content-card::before,
 .movie-card::before {
   content: '';

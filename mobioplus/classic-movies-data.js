@@ -1,4 +1,4 @@
-window.MOBIOPLUS_CLASSIC_MOVIES = [
+ï»¿window.MOBIOPLUS_CLASSIC_MOVIES = [
   {
     id: 'night-of-the-living-dead-1968',
     title: 'Night of the Living Dead',
@@ -8,9 +8,8 @@ window.MOBIOPLUS_CLASSIC_MOVIES = [
     description: 'A black-and-white survival classic frequently listed in public-domain film collections.',
     sourceName: 'Internet Archive',
     sourcePageUrl: 'https://archive.org/details/night_of_the_living_dead',
-    embedUrl: 'https://archive.org/embed/night_of_the_living_dead',
-    watchMode: 'embed',
-    embedAllowed: true,
+    watchMode: 'source-link',
+    embedAllowed: false,
     verificationStatus: 'needs-review',
     rightsStatus: 'Public domain claim in source catalog',
     licenseLabel: 'Public-domain claim (verify for commercial use)',
@@ -22,7 +21,7 @@ window.MOBIOPLUS_CLASSIC_MOVIES = [
     year: 1940,
     genre: 'Comedy',
     runtime: '92 min',
-    description: 'A fast-paced newsroom comedy from Hollywood’s classic era.',
+    description: 'A fast-paced newsroom comedy from Hollywood\'s classic era.',
     sourceName: 'Internet Archive',
     sourcePageUrl: 'https://archive.org/details/HisGirlFriday1940',
     embedUrl: 'https://archive.org/embed/HisGirlFriday1940',
@@ -124,8 +123,9 @@ window.MOBIOPLUS_CLASSIC_MOVIES = [
     description: 'A short silent detective-comedy known for inventive visual transitions.',
     sourceName: 'Internet Archive',
     sourcePageUrl: 'https://archive.org/details/SherlockJr.1924',
-    watchMode: 'source-link',
-    embedAllowed: false,
+    embedUrl: 'https://archive.org/embed/SherlockJr.1924',
+    watchMode: 'embed',
+    embedAllowed: true,
     verificationStatus: 'needs-review',
     rightsStatus: 'Public-domain era title; verify source publication status',
     licenseLabel: 'Rights require review',

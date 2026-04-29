@@ -67,6 +67,15 @@
     if (!items.length) {
       return;
     }
+    function iconForCategory(category) {
+      var c = (category || '').toLowerCase();
+      if (c === 'games') return 'GAME';
+      if (c === 'quizzes') return 'QUIZ';
+      if (c === 'learning') return 'LEARN';
+      if (c === 'lifestyle') return 'LIFE';
+      if (c === 'videos') return 'VIDEO';
+      return 'FREE';
+    }
     function buildCard(item, extraClass, rank) {
       var safeTitle = item.title || 'Free item';
       var safeCategory = item.category || 'General';
@@ -91,6 +100,7 @@
       return (
         '<article class="content-card shelf-card ' + categoryClass + ' ' + (extraClass || '') + '"' + (rank ? ' data-rank="' + rank + '"' : '') + '>' +
           '<span class="badge badge-free">' + (item.badge || 'Free') + '</span>' +
+          '<span class="tile-icon" aria-hidden="true">' + iconForCategory(safeCategory) + '</span>' +
           '<h3>' + safeTitle + '</h3>' +
           '<p class="meta">' + metaParts.join(' - ') + '</p>' +
           '<p>' + compactDescription + '</p>' +
@@ -336,6 +346,16 @@
       }
     }
 
+    function iconForGenre(genre) {
+      var value = (genre || '').toLowerCase();
+      if (value.indexOf('horror') !== -1) return 'HORROR';
+      if (value.indexOf('comedy') !== -1) return 'COMEDY';
+      if (value.indexOf('sci') !== -1) return 'SCI-FI';
+      if (value.indexOf('mystery') !== -1) return 'MYSTERY';
+      if (value.indexOf('silent') !== -1) return 'CLASSIC';
+      return 'MOVIE';
+    }
+
     var map = {};
     var html = movies.map(function (movie) {
       if (!movie || !movie.id) {
@@ -354,6 +374,7 @@
       return (
         '<article class="content-card movie-card">' +
           '<span class="badge badge-free">Free</span>' +
+          '<span class="tile-icon" aria-hidden="true">' + iconForGenre(genre) + '</span>' +
           '<h3>' + title + '</h3>' +
           '<p class="meta">' + year + ' - ' + genre + ' - ' + runtime + '</p>' +
           '<p>' + description + '</p>' +
@@ -415,7 +436,9 @@
       showMovie(btn.getAttribute('data-movie-id'));
     });
 
-    var first = movies.find(function (movie) { return movie && movie.id; });
+    var first = movies.find(function (movie) {
+      return movie && movie.id && movie.watchMode === 'embed' && movie.embedAllowed === true && movie.embedUrl && isSafeEmbedUrl(movie.embedUrl);
+    }) || movies.find(function (movie) { return movie && movie.id; });
     if (first) {
       showMovie(first.id);
     } else {
