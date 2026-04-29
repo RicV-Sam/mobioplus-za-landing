@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Number Guess Challenge | Mobioplus Free Games</title>
+  <meta name="description" content="Play the original Mobioplus Number Guess Challenge free game.">
+  <link rel="stylesheet" href="../games.css">
+</head>
+<body>
+  <main class="container">
+    <div class="topbar">
+      <div class="top-links">
+        <a href="../" class="button">All Free Games</a>
+        <a href="../../" class="button">Back to Mobioplus</a>
+      </div>
+      <span class="badge">Free</span>
+    </div>
+
+    <section class="card">
+      <h1>Number Guess Challenge</h1>
+      <p>Guess a secret number between 1 and 20. Use hints and win in as few attempts as possible.</p>
+      <p class="note">These free games are original Mobioplus demo games created for this freemium experience.</p>
+
+      <div class="control-row">
+        <label for="guess-input">Your guess</label>
+        <input id="guess-input" type="number" min="1" max="20" inputmode="numeric">
+        <button id="guess-btn" class="button" type="button">Check Guess</button>
+        <button id="reset-btn" class="button" type="button">Reset</button>
+      </div>
+      <p id="attempts" class="meta">Attempts: 0</p>
+      <p id="feedback" class="feedback">Enter a number to begin.</p>
+    </section>
+  </main>
+  <script src="./game.js"></script>
+</body>
+</html>

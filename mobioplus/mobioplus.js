@@ -99,13 +99,17 @@
         metaParts.push(item.difficultyLabel);
       }
 
+      var ctaHtml = item.playUrl
+        ? '<a class="text-cta" href="' + item.playUrl + '" aria-label="' + safeCtaLabel + ': ' + safeTitle + '">' + safeCtaLabel + '</a>'
+        : '<button type="button" class="text-cta preview-trigger" data-item-id="' + item.id + '">' + safeCtaLabel + '</button>';
+
       return (
         '<article class="content-card"' + idAttr + '>' +
           '<span class="badge badge-free">' + (item.badge || 'Free') + '</span>' +
           '<h3>' + safeTitle + '</h3>' +
           '<p class="meta">' + metaParts.join(' - ') + '</p>' +
           '<p>' + safeDescription + '</p>' +
-          '<button type="button" class="text-cta preview-trigger" data-item-id="' + item.id + '">' + safeCtaLabel + '</button>' +
+          ctaHtml +
         '</article>'
       );
     }).join('');

@@ -1,12 +1,13 @@
-window.MOBIOPLUS_FREE_CONTENT = [
+ï»¿window.MOBIOPLUS_FREE_CONTENT = [
   {
     id: 'memory-match',
     title: 'Memory Match',
     category: 'Games',
-    type: 'Game Preview',
+    type: 'Game',
     description: 'Flip and match pairs in short rounds designed for quick mobile entertainment breaks.',
     badge: 'Free',
-    ctaLabel: 'Play Free',
+    ctaLabel: 'Play Now',
+    playUrl: './games/memory-match/',
     previewContent: 'Preview objective: match all 8 pairs in under 90 seconds. Start with corner cards to build a memory map faster.',
     timeLabel: '2-3 min',
     anchorId: 'games',
@@ -23,10 +24,11 @@ window.MOBIOPLUS_FREE_CONTENT = [
     id: 'reaction-tap-challenge',
     title: 'Reaction Tap Challenge',
     category: 'Games',
-    type: 'Mini Challenge',
+    type: 'Game',
     description: 'Test your reaction speed with a simple tap timer made for touchscreen play.',
     badge: 'Free',
-    ctaLabel: 'Play Free',
+    ctaLabel: 'Play Now',
+    playUrl: './games/reaction-tap/',
     previewContent: 'Tap as soon as the button turns active. Try to keep your reaction time below 300 ms.',
     difficultyLabel: 'Easy',
     timeLabel: '1 min'
@@ -35,10 +37,11 @@ window.MOBIOPLUS_FREE_CONTENT = [
     id: 'number-guess-challenge',
     title: 'Number Guess Challenge',
     category: 'Games',
-    type: 'Mini Challenge',
+    type: 'Game',
     description: 'Guess the hidden number using quick high/low hints in this lightweight game sample.',
     badge: 'Free',
-    ctaLabel: 'Play Free',
+    ctaLabel: 'Play Now',
+    playUrl: './games/number-guess/',
     previewContent: 'Guess a number between 1 and 20 in six tries or fewer.',
     difficultyLabel: 'Medium',
     timeLabel: '2 min'
@@ -94,7 +97,7 @@ window.MOBIOPLUS_FREE_CONTENT = [
     badge: 'Free',
     ctaLabel: 'Try Free',
     previewContent: 'Sample quiz includes genre clues, famous quotes, and release-year hints.',
-    quizQuestion: 'What does “PG” generally indicate on a movie rating?',
+    quizQuestion: 'What does "PG" generally indicate on a movie rating?',
     quizAnswer: 'Parental guidance is suggested.',
     difficultyLabel: 'Medium',
     timeLabel: '4 min'

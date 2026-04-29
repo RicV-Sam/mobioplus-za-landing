@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Memory Match | Mobioplus Free Games</title>
+  <meta name="description" content="Play the original Mobioplus Memory Match free game.">
+  <link rel="stylesheet" href="../games.css">
+</head>
+<body>
+  <main class="container">
+    <div class="topbar">
+      <div class="top-links">
+        <a href="../" class="button">All Free Games</a>
+        <a href="../../" class="button">Back to Mobioplus</a>
+      </div>
+      <span class="badge">Free</span>
+    </div>
+
+    <section class="card">
+      <h1>Memory Match</h1>
+      <p>Match all pairs on a 4x4 board. Keep your move count low to improve your score.</p>
+      <p class="note">These free games are original Mobioplus demo games created for this freemium experience.</p>
+
+      <div class="control-row">
+        <button id="reset-btn" class="button" type="button">Reset Board</button>
+      </div>
+      <p id="moves" class="meta">Moves: 0</p>
+      <p id="status" class="feedback">Find all matching pairs.</p>
+      <div id="memory-grid" class="memory-grid" aria-label="Memory Match game board"></div>
+    </section>
+  </main>
+  <script src="./game.js"></script>
+</body>
+</html>
