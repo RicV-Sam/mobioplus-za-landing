@@ -72,7 +72,9 @@
       var safeCategory = item.category || 'General';
       var safeType = item.type || 'Preview';
       var safeDescription = item.description || 'Free preview content.';
+      var compactDescription = safeDescription.length > 84 ? safeDescription.slice(0, 81) + '...' : safeDescription;
       var safeCtaLabel = item.ctaLabel || 'View Free';
+      var categoryClass = 'cat-' + safeCategory.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
       var metaParts = [safeCategory, safeType];
       if (item.timeLabel) {
@@ -87,11 +89,11 @@
         : '<button type="button" class="text-cta preview-trigger" data-item-id="' + item.id + '">' + safeCtaLabel + '</button>';
 
       return (
-        '<article class="content-card shelf-card ' + (extraClass || '') + '"' + (rank ? ' data-rank="' + rank + '"' : '') + '>' +
+        '<article class="content-card shelf-card ' + categoryClass + ' ' + (extraClass || '') + '"' + (rank ? ' data-rank="' + rank + '"' : '') + '>' +
           '<span class="badge badge-free">' + (item.badge || 'Free') + '</span>' +
           '<h3>' + safeTitle + '</h3>' +
           '<p class="meta">' + metaParts.join(' - ') + '</p>' +
-          '<p>' + safeDescription + '</p>' +
+          '<p>' + compactDescription + '</p>' +
           ctaHtml +
         '</article>'
       );
