@@ -182,7 +182,37 @@ h1 { margin: 0; font-size: clamp(1.7rem, 4vw, 2.6rem); line-height: 1.12; }
 .preview-card p { margin: 6px 0 0; color: var(--muted); }
 .preview-interaction { margin-top: 12px; }
 .movie-preview-panel { margin-top: 16px; }
-.movie-card { min-height: 330px; }
+.movies-section { scroll-margin-top: 96px; }
+.movies-section .card-grid {
+  margin-top: 18px;
+  gap: 16px;
+}
+.movie-card {
+  min-height: 0;
+  height: 100%;
+  overflow: visible;
+}
+.movie-card h3 {
+  padding-right: 74px;
+  line-height: 1.28;
+}
+.movie-card .text-cta {
+  margin-top: 14px;
+  align-self: flex-start;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(73, 167, 255, 0.45);
+  background: linear-gradient(135deg, rgba(30, 200, 165, 0.2), rgba(73, 167, 255, 0.22));
+  color: #ebf4ff;
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+.movie-card .text-cta:hover,
+.movie-card .text-cta:focus-visible {
+  border-color: rgba(30, 200, 165, 0.9);
+  background: linear-gradient(135deg, rgba(30, 200, 165, 0.34), rgba(73, 167, 255, 0.34));
+  transform: translateY(-1px);
+}
 .movie-embed {
   width: 100%;
   min-height: 300px;
@@ -193,12 +223,13 @@ h1 { margin: 0; font-size: clamp(1.7rem, 4vw, 2.6rem); line-height: 1.12; }
 .rights-line { font-size: 0.84rem; color: #bfd5f7; }
 .rights-pending {
   margin-top: 8px;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
+  line-height: 1.35;
   color: #ffd67f;
   border: 1px solid rgba(255, 200, 87, 0.4);
   background: rgba(255, 200, 87, 0.12);
   border-radius: 8px;
-  padding: 6px 8px;
+  padding: 5px 8px;
 }
 .mini-tool { background: rgba(13, 27, 49, 0.8); border: 1px solid rgba(73, 167, 255, 0.3); border-radius: 10px; padding: 12px; }
 .mini-row { display: flex; gap: 8px; margin-top: 8px; }
@@ -264,6 +295,8 @@ a:focus-visible, button:focus-visible {
   .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .preview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .trust-section dl { grid-template-columns: 180px 1fr; }
+  .movies-section .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .movie-preview-panel { margin-top: 22px; }
 }
 @media (min-width: 1024px) {
   main { padding: 28px 24px; }
@@ -272,8 +305,13 @@ a:focus-visible, button:focus-visible {
   .category-strip { margin: 26px 0 16px; }
   .card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .preview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .movies-section .card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .movie-preview-panel { margin-top: 26px; padding: 18px; }
+  .movie-preview-panel h3 { margin-bottom: 8px; }
+  .movie-preview-panel .rights-line { margin: 8px 0 0; }
 }
 @media (min-width: 1366px) {
   .card-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .preview-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .movies-section .card-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
