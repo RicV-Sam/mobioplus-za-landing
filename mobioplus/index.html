@@ -41,34 +41,24 @@
   </header>
 
   <main id="main-content">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow">Mobile Entertainment Hub</p>
-        <h1 id="hero-title">Play, watch and discover more with Mobioplus</h1>
-        <p class="hero-text">Enjoy free games, quizzes, videos and bite-sized learning content. Upgrade when you are ready for more premium entertainment.</p>
-        <div class="hero-cta-row">
-          <a class="button button-primary" href="#free-content">Explore Free Content</a>
-          <a class="button button-secondary" href="#premium">See Premium Access</a>
+    <section class="hero feature-hero" aria-labelledby="hero-title">
+      <article class="feature-card">
+        <div class="feature-cover" aria-hidden="true">
+          <span class="feature-glyph">🎮</span>
+          <span class="badge badge-free">Free</span>
         </div>
-        <p class="trust-line">Free content available. Premium access requires subscription confirmation.</p>
-      </div>
-      <div class="hero-panel" aria-hidden="true">
-        <div class="metric-card">
-          <span class="metric-label">Updated Weekly</span>
-          <strong>Fresh content cadence</strong>
-          <p>Fresh games, quizzes and previews added regularly.</p>
+        <div class="feature-copy">
+          <p class="eyebrow">Featured Free Play</p>
+          <h1 id="hero-title">Play, watch and discover more with Mobioplus</h1>
+          <h2 id="featured-item-title">Memory Match</h2>
+          <p id="featured-item-desc" class="hero-text">Try a quick visual memory challenge and enjoy a premium mobile entertainment experience with free content first.</p>
+          <div class="hero-cta-row">
+            <a id="featured-item-link" class="button button-primary" href="./games/memory-match/">Play Free</a>
+            <a class="button button-secondary" href="#free-content">Browse Free Content</a>
+          </div>
+          <p class="trust-line">Free content available. Premium access requires subscription confirmation.</p>
         </div>
-        <div class="metric-card">
-          <span class="metric-label">Free to Explore</span>
-          <strong>Start instantly</strong>
-          <p>Try selected content before choosing premium.</p>
-        </div>
-        <div class="metric-card">
-          <span class="metric-label">Premium Optional</span>
-          <strong>Upgrade when ready</strong>
-          <p>Unlock extra content only when it suits you.</p>
-        </div>
-      </div>
+      </article>
     </section>
 
     <section class="category-strip" aria-label="Browse categories">
@@ -88,9 +78,64 @@
         <h2 id="free-title">What you can try free today</h2>
         <p>Try selected Mobioplus content for free before choosing whether to unlock premium.</p>
       </div>
-      <div id="free-card-grid" class="card-grid" aria-live="polite"></div>
+      <span id="games" class="anchor-point" aria-hidden="true"></span>
+      <section class="shelf-block" aria-labelledby="free-games-title">
+        <div class="shelf-head">
+          <h3 id="free-games-title">Free Games</h3>
+          <p>Play original mobile mini-games instantly.</p>
+        </div>
+        <div id="shelf-free-games" class="shelf-row" aria-live="polite"></div>
+      </section>
+      <section class="shelf-block" aria-labelledby="new-trending-title">
+        <div class="shelf-head">
+          <h3 id="new-trending-title">New and Trending</h3>
+          <p>Fresh picks across free mobile entertainment.</p>
+        </div>
+        <div id="shelf-new-trending" class="shelf-row" aria-live="polite"></div>
+      </section>
+      <section class="shelf-block" aria-labelledby="top-week-title">
+        <div class="shelf-head">
+          <h3 id="top-week-title">Top 10 This Week</h3>
+          <p>Most popular content in the Mobioplus catalogue.</p>
+        </div>
+        <div id="shelf-top-week" class="shelf-row rank-row" aria-live="polite"></div>
+      </section>
+      <span id="quizzes" class="anchor-point" aria-hidden="true"></span>
+      <section class="shelf-block" aria-labelledby="quiz-title">
+        <div class="shelf-head">
+          <h3 id="quiz-title">Quizzes and Challenges</h3>
+          <p>Short quiz rounds and brain-boosting challenges.</p>
+        </div>
+        <div id="shelf-quizzes" class="shelf-row" aria-live="polite"></div>
+      </section>
+      <span id="learn" class="anchor-point" aria-hidden="true"></span>
+      <span id="lifestyle" class="anchor-point" aria-hidden="true"></span>
+      <section class="shelf-block" aria-labelledby="learn-lifestyle-title">
+        <div class="shelf-head">
+          <h3 id="learn-lifestyle-title">Learning and Lifestyle</h3>
+          <p>Practical tips for focus, safety, data and everyday wellbeing.</p>
+        </div>
+        <div id="shelf-learning" class="shelf-row" aria-live="polite"></div>
+      </section>
+      <span id="videos" class="anchor-point" aria-hidden="true"></span>
       <noscript>
-        <p>Free mobile games and free quizzes are available in this Mobioplus mobile entertainment section, including learning tips and lifestyle tips.</p>
+        <div class="preview-card">
+          <h3>Free content fallback list</h3>
+          <ul>
+            <li>Memory Match (Game): Flip and match symbol pairs in short rounds.</li>
+            <li>Reaction Tap Challenge (Game): Tap fast when the signal appears.</li>
+            <li>Number Guess Challenge (Game): Guess numbers from 1 to 20 with hints.</li>
+            <li>Daily General Knowledge Quiz (Quiz): Mixed daily trivia challenge.</li>
+            <li>Football Trivia Challenge (Quiz): Matchday facts and football moments.</li>
+            <li>South Africa Quick Quiz (Quiz): Local geography and culture questions.</li>
+            <li>Movie Night Quiz (Quiz): Family-safe cinema trivia.</li>
+            <li>60-Second Focus Tip (Learning): Quick focus reset routine.</li>
+            <li>Mobile Safety Basics (Learning): Practical account and device checks.</li>
+            <li>Save Your Data Tip (Learning): Lower mobile data usage tips.</li>
+            <li>Strong Password Starter (Learning): Build safer passphrases.</li>
+            <li>Fitness Starter Tip (Lifestyle): Beginner movement routine.</li>
+          </ul>
+        </div>
       </noscript>
     </section>
 
@@ -116,7 +161,7 @@
         <p>Explore selected public-domain and open-access classic films. Availability and rights information should be verified before final commercial use.</p>
         <p>Classic movie embeds are provided from third-party archive sources. Public-domain/open-access status must be verified before final commercial use.</p>
       </div>
-      <div id="classic-movie-grid" class="card-grid" aria-live="polite"></div>
+      <div id="classic-movie-grid" class="shelf-row movie-shelf" aria-live="polite"></div>
       <article class="preview-card movie-preview-panel" aria-live="polite">
         <h3 id="movie-preview-title">Select a classic film</h3>
         <p id="movie-preview-meta" class="meta">Free classic movie preview</p>
@@ -147,46 +192,46 @@
 
     <section id="popular" class="content-section" aria-labelledby="popular-title">
       <div class="section-head">
-        <h2 id="popular-title">Popular This Week</h2>
-        <p>Curated picks across free and premium mobile content.</p>
+        <h2 id="popular-title">Premium Picks</h2>
+        <p>Upgrade-ready catalogue picks clearly marked as premium.</p>
       </div>
-      <div class="card-grid">
-        <article class="content-card">
+      <div class="shelf-row">
+        <article class="content-card shelf-card">
           <span class="badge badge-free">Free</span>
           <h3>Word Sprint: Speed Round</h3>
           <p class="meta">Game</p>
           <p>Build as many words as possible before the countdown ends.</p>
           <a class="text-cta" href="#free-previews">Play Free</a>
         </article>
-        <article class="content-card">
+        <article class="content-card shelf-card">
           <span class="badge badge-premium">Premium</span>
           <h3>Arcade Legends Pack</h3>
           <p class="meta">Game Collection</p>
           <p>Includes advanced levels and challenge modes. Premium subscription confirmation is required.</p>
           <a class="text-cta" href="#premium">See Premium Access</a>
         </article>
-        <article class="content-card">
+        <article class="content-card shelf-card">
           <span class="badge badge-free">Free</span>
           <h3>Brain Boost Quiz Mix</h3>
           <p class="meta">Quiz</p>
           <p>Rotating quiz themes with quick score cards you can revisit each week.</p>
           <a class="text-cta" href="#free-previews">Try Free</a>
         </article>
-        <article class="content-card">
+        <article class="content-card shelf-card">
           <span class="badge badge-premium">Premium</span>
           <h3>After-Hours Cinema Room</h3>
           <p class="meta">Video</p>
           <p>Extended viewing picks and editor collections. Premium subscription confirmation is required.</p>
           <a class="text-cta" href="#premium">See Premium Access</a>
         </article>
-        <article class="content-card">
+        <article class="content-card shelf-card">
           <span class="badge badge-free">Free</span>
           <h3>Budget Living Basics</h3>
           <p class="meta">Lifestyle</p>
           <p>Weekly practical ideas for food planning, transport and smarter day-to-day spending.</p>
           <a class="text-cta" href="#free-previews">Read Free</a>
         </article>
-        <article class="content-card">
+        <article class="content-card shelf-card">
           <span class="badge badge-premium">Premium</span>
           <h3>Career Skills Mini-Course</h3>
           <p class="meta">Learning</p>

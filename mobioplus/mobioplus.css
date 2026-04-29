@@ -315,3 +315,162 @@ a:focus-visible, button:focus-visible {
   .preview-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .movies-section .card-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
+
+/* Catalogue upgrade styles */
+.anchor-point {
+  display: block;
+  position: relative;
+  top: -92px;
+  visibility: hidden;
+}
+.feature-hero {
+  margin-top: 14px;
+}
+.feature-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  background: linear-gradient(160deg, rgba(16, 30, 56, 0.95), rgba(11, 21, 40, 0.95));
+  border: 1px solid rgba(73, 167, 255, 0.35);
+  border-radius: 24px;
+  overflow: hidden;
+}
+.feature-cover {
+  min-height: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(30, 200, 165, 0.5), transparent 45%),
+    radial-gradient(circle at 80% 80%, rgba(73, 167, 255, 0.48), transparent 40%),
+    linear-gradient(145deg, #112a4f, #0b1b35);
+}
+.feature-glyph {
+  font-size: 3.5rem;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.35));
+}
+.feature-cover .badge {
+  top: 12px;
+  left: 12px;
+  right: auto;
+}
+.feature-copy {
+  padding: 18px;
+}
+.feature-copy h2 {
+  margin: 8px 0 0;
+  font-size: clamp(1.25rem, 3vw, 1.55rem);
+}
+.shelf-block {
+  margin-top: 20px;
+}
+.shelf-head {
+  margin-bottom: 10px;
+}
+.shelf-head h3 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+.shelf-head p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 0.93rem;
+}
+.shelf-row {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(190px, 1fr));
+  gap: 12px;
+  overflow-x: auto;
+  padding: 4px 2px 8px;
+  scroll-snap-type: x proximity;
+}
+.shelf-row .content-card,
+.movie-card {
+  min-height: 0;
+  border-radius: 16px;
+  scroll-snap-align: start;
+  background: linear-gradient(180deg, rgba(15, 30, 56, 0.95), rgba(10, 20, 38, 0.96));
+}
+.shelf-card .text-cta,
+.shelf-row .text-cta {
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(73, 167, 255, 0.45);
+  background: linear-gradient(135deg, rgba(30, 200, 165, 0.2), rgba(73, 167, 255, 0.24));
+  color: #e8f2ff;
+  text-decoration: none;
+}
+.shelf-row .content-card p {
+  font-size: 0.89rem;
+}
+.shelf-row .content-card::before,
+.movie-card::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 72px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  background:
+    linear-gradient(120deg, rgba(30, 200, 165, 0.38), rgba(73, 167, 255, 0.42)),
+    linear-gradient(145deg, #0f213f, #142d55);
+}
+.movie-card::before {
+  height: 92px;
+  background:
+    linear-gradient(120deg, rgba(255, 200, 87, 0.35), rgba(73, 167, 255, 0.35)),
+    linear-gradient(145deg, #17253f, #1a3158);
+}
+.movie-card .rights-line {
+  font-size: 0.77rem;
+  color: #9fc4f1;
+}
+.movie-card .rights-pending {
+  font-size: 0.72rem;
+  margin-top: 6px;
+}
+.rank-row .content-card {
+  padding-left: 46px;
+  position: relative;
+}
+.rank-row .content-card::after {
+  content: attr(data-rank);
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.82);
+}
+.movie-preview-panel {
+  margin-top: 26px;
+}
+.movie-preview-panel #movie-preview-source-link {
+  margin-top: 10px;
+}
+
+@media (min-width: 768px) {
+  .feature-card {
+    grid-template-columns: 0.95fr 1.35fr;
+  }
+  .feature-copy {
+    padding: 24px;
+  }
+  .shelf-row {
+    grid-template-columns: repeat(6, minmax(210px, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  main { max-width: 1240px; }
+  .shelf-row {
+    overflow: visible;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .rank-row {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}

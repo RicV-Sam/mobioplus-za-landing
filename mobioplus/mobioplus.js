@@ -64,32 +64,15 @@
 
   function renderFreeContent() {
     var items = window.MOBIOPLUS_FREE_CONTENT || [];
-    var grid = document.getElementById('free-card-grid');
-    if (!grid || !items.length) {
+    if (!items.length) {
       return;
     }
-
-    var firstAnchorByCategory = {};
-    var categoriesToAnchors = {
-      Games: 'games',
-      Quizzes: 'quizzes',
-      Learning: 'learn',
-      Lifestyle: 'lifestyle',
-      Videos: 'videos'
-    };
-
-    var html = items.map(function (item) {
+    function buildCard(item, extraClass, rank) {
       var safeTitle = item.title || 'Free item';
       var safeCategory = item.category || 'General';
       var safeType = item.type || 'Preview';
       var safeDescription = item.description || 'Free preview content.';
       var safeCtaLabel = item.ctaLabel || 'View Free';
-      var anchorId = item.anchorId || categoriesToAnchors[safeCategory];
-      var idAttr = '';
-      if (anchorId && !firstAnchorByCategory[anchorId]) {
-        firstAnchorByCategory[anchorId] = true;
-        idAttr = ' id="' + anchorId + '"';
-      }
 
       var metaParts = [safeCategory, safeType];
       if (item.timeLabel) {
@@ -104,7 +87,7 @@
         : '<button type="button" class="text-cta preview-trigger" data-item-id="' + item.id + '">' + safeCtaLabel + '</button>';
 
       return (
-        '<article class="content-card"' + idAttr + '>' +
+        '<article class="content-card shelf-card ' + (extraClass || '') + '"' + (rank ? ' data-rank="' + rank + '"' : '') + '>' +
           '<span class="badge badge-free">' + (item.badge || 'Free') + '</span>' +
           '<h3>' + safeTitle + '</h3>' +
           '<p class="meta">' + metaParts.join(' - ') + '</p>' +
@@ -112,9 +95,35 @@
           ctaHtml +
         '</article>'
       );
-    }).join('');
+    }
 
-    grid.innerHTML = html;
+    var games = items.filter(function (item) { return item.category === 'Games'; });
+    var quizzes = items.filter(function (item) { return item.category === 'Quizzes'; });
+    var learning = items.filter(function (item) { return item.category === 'Learning' || item.category === 'Lifestyle'; });
+    var trending = items.slice(0, 8);
+    var topWeek = items.slice(0, 10);
+
+    var freeGamesShelf = document.getElementById('shelf-free-games');
+    var trendingShelf = document.getElementById('shelf-new-trending');
+    var topShelf = document.getElementById('shelf-top-week');
+    var quizShelf = document.getElementById('shelf-quizzes');
+    var learnShelf = document.getElementById('shelf-learning');
+
+    if (freeGamesShelf) {
+      freeGamesShelf.innerHTML = games.map(function (item) { return buildCard(item); }).join('');
+    }
+    if (trendingShelf) {
+      trendingShelf.innerHTML = trending.map(function (item) { return buildCard(item); }).join('');
+    }
+    if (topShelf) {
+      topShelf.innerHTML = topWeek.map(function (item, idx) { return buildCard(item, 'rank-card', idx + 1); }).join('');
+    }
+    if (quizShelf) {
+      quizShelf.innerHTML = quizzes.map(function (item) { return buildCard(item); }).join('');
+    }
+    if (learnShelf) {
+      learnShelf.innerHTML = learning.map(function (item) { return buildCard(item); }).join('');
+    }
 
     var previewMap = {};
     items.forEach(function (item) {
@@ -252,7 +261,7 @@
       }
     }
 
-    grid.addEventListener('click', function (event) {
+    document.addEventListener('click', function (event) {
       var btn = event.target.closest('.preview-trigger');
       if (!btn) {
         return;
@@ -262,6 +271,17 @@
 
     if (items[0] && items[0].id) {
       showItem(items[0].id);
+    }
+
+    var featured = games[0] || items[0];
+    var featuredTitle = document.getElementById('featured-item-title');
+    var featuredDesc = document.getElementById('featured-item-desc');
+    var featuredLink = document.getElementById('featured-item-link');
+    if (featured && featuredTitle && featuredDesc && featuredLink) {
+      featuredTitle.textContent = featured.title || 'Featured free content';
+      featuredDesc.textContent = featured.description || 'Try selected Mobioplus free content today.';
+      featuredLink.href = featured.playUrl || '#free-previews';
+      featuredLink.textContent = featured.playUrl ? 'Play Free' : 'Try Free';
     }
   }
 
@@ -335,7 +355,7 @@
           '<h3>' + title + '</h3>' +
           '<p class="meta">' + year + ' - ' + genre + ' - ' + runtime + '</p>' +
           '<p>' + description + '</p>' +
-          '<p class="rights-line">Source: ' + sourceName + '. Rights: ' + rightsLabel + '.</p>' +
+          '<p class="rights-line">Rights: ' + rightsLabel + '</p>' +
           '<p class="rights-pending">Rights review pending before final commercial use.</p>' +
           '<button type="button" class="text-cta movie-trigger" data-movie-id="' + movie.id + '">' + cta + '</button>' +
         '</article>'
